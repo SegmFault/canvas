@@ -1,0 +1,61 @@
+* Some tittle-tattle
+** Js basic
+*** useless things
+- explicit invoke
+- primitive value:
+string number symbol bigint null undefined boolean
+
+- object is always true.
+
+- Thousand separator system
+ones thousands millons billons 
+1,234,567,891  equals 'one billon two hundred thrity-four millon five hundred sixty-seven thousand eight hundred ninety-one '
+skills:
+   1. just remember the first comma represent thousand, the second is millon, the third is billon, ..., and so on.
+   
+   2. remember 1e3 -> thousand 1e6 -> millon 1e9 -> billon and so on in CS.
+
+*** Lexical environment
+hello();
+
+let hello = function () {
+    console.log("hello");
+}
+
+*** Destructing assignment
+- example
+function show({title= "Untitled", width= 160, height= 90, item= []}) {
+    console.log(`${title} ${width} ${height}`)
+    console.log(item);
+}
+
+let option = {
+    title: "Emacs",
+    item: ["Version: 30.2", "Id: 000-100-000"],
+};
+show(option);
+
+*** closure
+function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++;
+  };
+}
+
+let counter = makeCounter();
+
+counter()
+counter()
+console.log( counter() );
+
+- console.log(Math.max.length);
+/* once write Math.max() the function will be called */
+
+** Some english expression
+*** term
+- js
+  primitive value
+  thousand millon
+  lexical environment
