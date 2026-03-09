@@ -1,6 +1,6 @@
-// base.h
-#ifndef BASE_H_
-#define BASE_H_
+/* arena_allocator.h */
+#ifndef ARENA_ALLOCATOR_
+#define ARENA_ALLOCATOR_
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -17,16 +17,15 @@ void *area_alloc(Area *a, size_t size);
 void area_reset(Area *a);
 void area_destroy(Area *a);
 
-#endif //BASE_H_
+#endif //ARENA_ALLOCATOR_
 
 /* Implementation section */
-#ifdef BASE_IMPLEMENTATION
+#ifdef ARENA_ALLOCATOR_IMPLEMENTATION
 
 #include <assert.h>
 #include <stdio.h>
 
-/* invoke example
-   Area a = area_init(1024)  */
+
 Area area_init(size_t capacity)
 {
     assert(capacity > 0 && "Area capacity must be a positive number");
@@ -41,8 +40,7 @@ Area area_init(size_t capacity)
     return s;
 }
 
-/* invoke example:
-   area_alloc(a, 64); */
+
 void *area_alloc(Area *a, size_t size)
 {
     assert(a != NULL && "Area pointer cannot be NULL");

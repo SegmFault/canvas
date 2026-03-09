@@ -1,0 +1,107 @@
+/* 使用 CSS 变量统一管理颜色和间距 */
+:root {
+  --bg-color: #282828;
+  --text-color: #ebdbb2; /* 稍微亮一点的 Gruvbox 风格文字色 */
+  --accent-color: #285555;
+  --wrapper-width: 500px;
+}
+
+/* 基础样式重置 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: system-ui, -apple-system, sans-serif;
+  height: 100dvh; /* 使用 dynamic viewport height */
+}
+
+/* 居中容器：改用现代布局 */
+.wrapper {
+  inline-size: min(100%, var(--wrapper-width)); /* 响应式宽度 */
+  margin-inline: auto; /* 逻辑属性替代 margin: 0 auto */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 登录层：使用 Grid 轻松居中 */
+#loginWrapper {
+  position: fixed;
+  inset: 0; /* 替代 top/right/bottom/left: 0 */
+  background-color: var(--bg-color);
+  display: grid;
+  place-content: center; /* 水平垂直全居中 */
+  text-align: center;
+  color: var(--accent-color);
+  z-index: 100;
+
+  &[style*="display: none"] { display: none; } /* CSS 嵌套语法 */
+}
+
+/* 消息历史区域 */
+#historyMsg {
+  flex: 1; /* 自动填充剩余空间 */
+  height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin; /* 现代滚动条控制 */
+
+  img {
+    max-inline-size: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+}
+
+/* 控制区域：改用 Flexbox 替代 float */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .input-group {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+}
+
+#messageInput {
+  flex-grow: 1;
+  height: 90px;
+  resize: none; /* 禁止手动拉伸破坏布局 */
+  background: #3c3836;
+  color: white;
+  border: 1px solid #504945;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+#sendBtn {
+  width: 70px;
+  height: 90px;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
+
+/* 表情包选择器 */
+#emojiWrapper {
+  position: absolute;
+  bottom: 110%; /* 弹出在输入框上方 */
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  background: #3c3836;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  border-radius: 8px;
+}

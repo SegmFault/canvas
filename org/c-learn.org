@@ -1,0 +1,33 @@
+: The C standard library for the Linux system :
+- glibc
+
+  It's one of the C Standard implementation on Linux, different OS or _architecture_ has different implement.
+  the glibc library provide a version of c standard function or head-file source code.
+
+  * TODO Reading the source code about the musl libc
+
+- linux directory oragnization
+
+  /usr/lib/libc.a
+
+  /usr/lib/libc.so
+
+  /usr/lib/libc.so.6
+
+  These are some files in /usr/lib/. _Conventionally_, on linux operating system, the *.a* suffix and *.so* suffix
+  _respectivly_represent static library(i.e. archive) and shared library(i.e. dynamic library).
+
+- clang
+
+  clang is hightly compatible with gcc.
+
+- ar
+
+  archive can package object files into static library.
+
+  There are some ar flag arguments: r(replace), c(create), s(symbol). This is a command: *ar rcs libbase.a base_lib.o*.
+
+
+- stb-style
+
+  Single header file c library
